@@ -1,38 +1,6 @@
-// Funktionen für Fokus-Outline nur für Tastaturnutzer
-const handleFirstTab = (e) => {
-  if (e.key === 'Tab') {
-    document.body.classList.add('user-is-tabbing');
-    window.removeEventListener('keydown', handleFirstTab);
-    window.addEventListener('mousedown', handleMouseDownOnce);
-  }
-};
-
-const handleMouseDownOnce = () => {
-  document.body.classList.remove('user-is-tabbing');
-  window.removeEventListener('mousedown', handleMouseDownOnce);
-  window.addEventListener('keydown', handleFirstTab);
-};
-
-window.addEventListener('keydown', handleFirstTab);
-
-// "Back to Top"-Button-Logik
-const backToTopButton = document.querySelector(".back-to-top");
-let isBackToTopRendered = false;
-
-const alterStyles = (isRendered) => {
-  backToTopButton.style.visibility = isRendered ? "visible" : "hidden";
-  backToTopButton.style.opacity = isRendered ? "1" : "0";
-  backToTopButton.style.transform = isRendered ? "scale(1)" : "scale(0)";
-};
-
-window.addEventListener("scroll", () => {
-  isBackToTopRendered = window.scrollY > 700;
-  alterStyles(isBackToTopRendered);
-});
-
 // Hamburger Menu Toggle
 const hamburger = document.getElementById('hamburger');
-const navItems = document.getElementById('nav-items');
+const navItems = document.querySelector('.nav__items');
 
 hamburger.addEventListener('click', () => {
   navItems.classList.toggle('active');
