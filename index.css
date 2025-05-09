@@ -632,48 +632,21 @@ body:not(.user-is-tabbing) a:focus {
     }
 }
 
-/* Feedback */
+/* --------------------------------------- */
+/* ----- Clients Feedback ----- */
+/* --------------------------------------- */
+
 .feedback {
     background: linear-gradient(135deg, #000 0%, #000 100%);
     color: var(--white);
-    overflow: hidden;
-    position: relative;
     padding: 4rem 0;
-    /* Padding hinzugefügt, um sicherzustellen, dass die Karten nicht abgeschnitten werden */
-}
-
-.feedback__cards-container {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
 }
 
 .feedback__cards {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
-    animation: scroll 90s linear infinite;
-    /* Verlangsamte Animation */
-    will-change: transform;
-}
-
-/* Langsame Animation */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-/* Schneller auf kleinen Bildschirmen */
-@media (max-width: 768px) {
-    .feedback__cards {
-        animation: scroll 120s linear infinite;
-        /* Noch langsamere Animation für kleinere Bildschirme */
-    }
 }
 
 .feedback__card {
@@ -681,17 +654,14 @@ body:not(.user-is-tabbing) a:focus {
     border: 1px solid var(--white);
     border-radius: 10px;
     padding: 2rem;
-    width: 300px;
-    /* Festgelegte Breite für die Karten */
+    max-width: 300px;
     text-align: center;
     transition: transform 0.3s;
     color: var(--white);
-    flex: 0 0 auto;
-    min-height: 400px;
-    /* Mindesthöhe, um sicherzustellen, dass alle Karten gleich hoch sind */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex: 1 1 calc(33.333% - 2rem);
+    /* 3 Karten nebeneinander */
+    min-width: 250px;
+    margin-bottom: 2rem;
 }
 
 .feedback__card:hover {
@@ -714,22 +684,10 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .feedback__stars {
-    color: var(--white);
+    color: var(--yellow);
+    /* Färbe die Sterne gelb */
     font-size: 1.5rem;
-}
-
-.feedback__body {
     margin-bottom: 1rem;
-    flex-grow: 1;
-    /* Verhindert, dass der Textbereich zu klein wird */
-    display: flex;
-    align-items: center;
-}
-
-.feedback__footer {
-    font-size: 1.2rem;
-    color: var(--white);
-    font-weight: bold;
 }
 
 .feedback__name {
@@ -738,13 +696,32 @@ body:not(.user-is-tabbing) a:focus {
     margin-bottom: 1rem;
 }
 
+.feedback__body {
+    margin-bottom: 1rem;
+}
+
+.feedback__footer {
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: bold;
+}
+
 /* Responsive Anpassungen für mobile Ansicht */
 @media (max-width: 768px) {
     .feedback__card {
-        min-height: 450px;
-        /* Höhere Mindesthöhe für mobile Geräte */
+        width: 100%;
+        max-width: none;
+        /* Maximale Breite für die Karten entfernen */
     }
 }
+
+/* Zentrierung der Karten, wenn nur 2 übrig sind */
+@media (max-width: 1024px) {
+    .feedback__cards {
+        justify-content: space-evenly;
+    }
+}
+
 
 /* About Me */
 .about__content {
