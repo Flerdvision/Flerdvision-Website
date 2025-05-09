@@ -1,7 +1,4 @@
-/* --------------------------------------- */
-/* ----- Basic Setup ----- */
-/* --------------------------------------- */
-
+/* Base styles */
 @font-face {
     font-family: 'Hk Grotesk';
     font-style: normal;
@@ -107,10 +104,7 @@ img {
     max-width: 100%;
 }
 
-/* --------------------------------------- */
-/* ----- Headlines and Paragraphs ----- */
-/* --------------------------------------- */
-
+/* Headlines and Paragraphs */
 h1,
 h2,
 h3 {
@@ -229,10 +223,7 @@ p {
     }
 }
 
-/* --------------------------------------- */
-/* ----- Buttons and Links ----- */
-/* --------------------------------------- */
-
+/* Buttons and Links */
 a {
     color: var(--white);
     font-weight: 400;
@@ -311,10 +302,7 @@ body:not(.user-is-tabbing) a:focus {
     font-family: sans-serif;
 }
 
-/* --------------------------------------- */
-/* ----- Back to Top Button ----- */
-/* --------------------------------------- */
-
+/* Back to Top Button */
 .back-to-top {
     position: fixed;
     bottom: 2rem;
@@ -347,14 +335,10 @@ body:not(.user-is-tabbing) a:focus {
     transform: scale(0.95);
 }
 
-/* --------------------------------------- */
-/* ----- Navigation (Responsive) ----- */
-/* --------------------------------------- */
-
+/* Navigation (Responsive) */
 .nav {
     display: flex;
     justify-content: space-between;
-    /* Logo links, Menü rechts */
     align-items: center;
     padding: var(--gutter-normal) var(--gutter-medium);
     width: 100%;
@@ -462,7 +446,6 @@ body:not(.user-is-tabbing) a:focus {
     .nav__link {
         padding: var(--gutter-small) 0;
         font-size: var(--font-size-small);
-        /* Kleinere Schriftgröße auf Mobilgeräten */
     }
 
     .logo-item {
@@ -470,10 +453,7 @@ body:not(.user-is-tabbing) a:focus {
     }
 }
 
-/* --------------------------------------- */
-/* ----- Buttons (Pfeil entfernen) ----- */
-/* --------------------------------------- */
-
+/* Buttons (Pfeil entfernen) */
 .btn,
 .link__text {
     position: relative;
@@ -492,17 +472,12 @@ body:not(.user-is-tabbing) a:focus {
 .btn::after,
 .link__text::after {
     display: none;
-    /* Pfeil entfernen */
 }
 
-/* --------------------------------------- */
-/* ----- Textgröße auf Mobilgeräten ----- */
-/* --------------------------------------- */
-
+/* Textgröße auf Mobilgeräten */
 @media (max-width: 768px) {
     :root {
         --font-size-small: 1.4rem;
-        /* Kleinere Schriftgröße auf Mobilgeräten */
         --font-size-normal: 1.8rem;
         --font-size-medium: 2.2rem;
         --font-size-medium-1: 2.8rem;
@@ -512,7 +487,6 @@ body:not(.user-is-tabbing) a:focus {
 
     .heading-primary {
         font-size: var(--font-size-large);
-        /* Kleinere Überschrift auf Mobilgeräten */
     }
 
     h2 {
@@ -525,14 +499,10 @@ body:not(.user-is-tabbing) a:focus {
 
     p {
         font-size: var(--font-size-small);
-        /* Kleinere Absatzschrift auf Mobilgeräten */
     }
 }
 
-/* --------------------------------------- */
-/* ----- Menu Frame ----- */
-/* --------------------------------------- */
-
+/* Menu Frame */
 .menu-frame {
     display: flex;
     justify-content: center;
@@ -567,10 +537,7 @@ body:not(.user-is-tabbing) a:focus {
     cursor: pointer;
 }
 
-/* --------------------------------------- */
-/* ----- Work ----- */
-/* --------------------------------------- */
-
+/* Work */
 .work__boxes {
     display: flex;
     flex-wrap: wrap;
@@ -578,6 +545,8 @@ body:not(.user-is-tabbing) a:focus {
     justify-content: center;
     overflow: hidden;
     margin-top: 4rem;
+    padding-top: 6rem;
+    /* Fügen Sie zusätzlichen Abstand oben hinzu */
 }
 
 .work__box {
@@ -596,6 +565,8 @@ body:not(.user-is-tabbing) a:focus {
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    margin-top: 2rem;
+    /* Fügen Sie zusätzlichen Abstand oben hinzu */
 }
 
 .work__box:hover {
@@ -604,8 +575,14 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__text {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    /* Verringern Sie den Abstand zwischen Überschrift und Text */
     width: 100%;
+}
+
+.work__text h3 {
+    margin-bottom: 0.5rem;
+    /* Verringern Sie den Abstand zwischen Überschrift und Text */
 }
 
 .work__video-box {
@@ -655,20 +632,48 @@ body:not(.user-is-tabbing) a:focus {
     }
 }
 
-/* --------------------------------------- */
-/* ----- Clients Feedback ----- */
-/* --------------------------------------- */
-
+/* Feedback */
 .feedback {
     background: linear-gradient(135deg, #000 0%, #000 100%);
     color: var(--white);
+    overflow: hidden;
+    position: relative;
+    padding: 4rem 0;
+    /* Padding hinzugefügt, um sicherzustellen, dass die Karten nicht abgeschnitten werden */
+}
+
+.feedback__cards-container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
 }
 
 .feedback__cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
     gap: 2rem;
+    animation: scroll 90s linear infinite;
+    /* Verlangsamte Animation */
+    will-change: transform;
+}
+
+/* Langsame Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Schneller auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+    .feedback__cards {
+        animation: scroll 120s linear infinite;
+        /* Noch langsamere Animation für kleinere Bildschirme */
+    }
 }
 
 .feedback__card {
@@ -676,10 +681,17 @@ body:not(.user-is-tabbing) a:focus {
     border: 1px solid var(--white);
     border-radius: 10px;
     padding: 2rem;
-    max-width: 300px;
+    width: 300px;
+    /* Festgelegte Breite für die Karten */
     text-align: center;
     transition: transform 0.3s;
     color: var(--white);
+    flex: 0 0 auto;
+    min-height: 400px;
+    /* Mindesthöhe, um sicherzustellen, dass alle Karten gleich hoch sind */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .feedback__card:hover {
@@ -708,6 +720,10 @@ body:not(.user-is-tabbing) a:focus {
 
 .feedback__body {
     margin-bottom: 1rem;
+    flex-grow: 1;
+    /* Verhindert, dass der Textbereich zu klein wird */
+    display: flex;
+    align-items: center;
 }
 
 .feedback__footer {
@@ -722,50 +738,89 @@ body:not(.user-is-tabbing) a:focus {
     margin-bottom: 1rem;
 }
 
-/* --------------------------------------- */
-/* ----- About ----- */
-/* --------------------------------------- */
-
-.about__content {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+/* Responsive Anpassungen für mobile Ansicht */
+@media (max-width: 768px) {
+    .feedback__card {
+        min-height: 450px;
+        /* Höhere Mindesthöhe für mobile Geräte */
+    }
 }
 
-@media(max-width: 900px) {
-    .about__content {
-        flex-direction: column-reverse;
-        align-items: initial;
+/* About Me */
+.about__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    /* Abstand zwischen Text und Bild */
+    margin-top: var(--gutter-medium);
+
+    /* Abstand oben */
+    #about h2::after {
+        display: none;
+        /* Entfernt die Linie unter der Überschrift im "About Me" Abschnitt */
     }
+
+}
+
+.about__text {
+    flex: 1;
+    max-width: 50%;
+    /* Textbereich bekommt 50% der Breite */
+    padding-right: 2rem;
+    /* Etwas Abstand zwischen Text und Bild */
 }
 
 .about__photo-container {
-    margin-bottom: var(--gutter-normal);
+    flex: 1;
+    max-width: 50%;
+    /* Bild bekommt ebenfalls 50% der Breite */
+    display: flex;
+    justify-content: center;
 }
 
-@media(min-width: 901px) {
+.about__photo {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    /* Das Bild wird auf maximal 800px skaliert */
+    border-radius: 10px;
+}
+
+/* Auf mobilen Geräten das Layout ändern */
+@media (max-width: 768px) {
+    .about__content {
+        flex-direction: column;
+        /* Das Bild unter den Text verschieben */
+        text-align: center;
+        /* Text wird zentriert */
+    }
+
     .about__text {
-        flex: 0 0 35%;
+        max-width: 100%;
+        /* Der Textbereich nimmt 100% der Breite ein */
+        margin-bottom: var(--gutter-medium);
+        /* Etwas Abstand unter dem Text */
     }
 
     .about__photo-container {
-        flex: 1;
-        margin: 0 var(--gutter-huge) 0 0;
+        max-width: 100%;
+        /* Bild nimmt auch 100% der Breite ein */
+    }
+
+    .about__photo {
+        max-width: 90%;
+        /* Bild wird noch kleiner auf Handys */
     }
 }
 
-/* --------------------------------------- */
-/* ----- Contact ----- */
-/* --------------------------------------- */
 
+/* Contact */
 .contact__info {
     max-width: var(--container-medium-width);
 }
 
-/* --------------------------------------- */
-/* ----- Footer ----- */
-/* --------------------------------------- */
-
+/* Footer */
 .footer {
     text-align: center;
     padding: var(--gutter-medium) 0 var(--gutter-normal);
@@ -815,7 +870,6 @@ body {
 .nav {
     display: flex;
     justify-content: space-between;
-    /* Logo links, Menü rechts */
     align-items: center;
     padding: var(--gutter-normal) var(--gutter-medium);
     width: 100%;
@@ -832,7 +886,6 @@ body {
 
 .menu-logo {
     width: 50px;
-    /* Passen Sie die Größe nach Bedarf an */
     height: 50px;
     cursor: pointer;
 }
