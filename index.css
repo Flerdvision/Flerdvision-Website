@@ -754,12 +754,7 @@ body:not(.user-is-tabbing) a:focus {
     gap: 3rem;
     /* Abstand zwischen Text und Bild */
     margin-top: var(--gutter-medium);
-
     /* Abstand oben */
-    #about h2::after {
-        display: none;
-        /* Entfernt die Linie unter der Überschrift im "About Me" Abschnitt */
-    }
 
 }
 
